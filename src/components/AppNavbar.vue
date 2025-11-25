@@ -54,7 +54,7 @@ function handleLogout() {
             .flex                   display: flex;
             .underline              text-decoration: underline;
     -->
-    <nav class="flex items-center gap-8 p-4 bg-slate-200">
+    <nav class="flex items-center gap-8 p-4 bg-slate-800 text-white">
         <a class="text-xl" href="#">DV Social</a>
 
         <ul class="flex gap-4">
