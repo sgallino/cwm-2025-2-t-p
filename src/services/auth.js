@@ -56,6 +56,14 @@ let user = {
 }
 let observers = [];
 
+// Apenas carga el servicio levantamos al usuario de localStorage.
+// Esto no reemplaza en lo absoluto lo que hacemos con Supabase (que
+// hace la verificación con el backend), pero nos va a permitir evitar
+// que Vue Router nos redireccione siempre al login.
+if(localStorage.getItem('user')) {
+    user = JSON.parse(localStorage.getItem('user'));
+}
+
 // Obtenemos los datos del usuario autenticado cuando arranca la aplicación.
 loadUserFromSupabase();
 
@@ -272,4 +280,10 @@ function setUserState(state) {
         ...state,
     }
     notifyAll();
+
+    if(user.id !== null) {
+        localStorage.setItem('user', JSON.stringify(user));
+    } else {
+        localStorage.removeItem('user');
+    }
 }
