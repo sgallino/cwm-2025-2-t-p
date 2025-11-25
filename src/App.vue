@@ -1,5 +1,6 @@
 <script setup>
 import AppLayout from './components/AppLayout.vue';
+import NotificationBox from './components/NotificationBox.vue';
 import { onMounted, provide, ref } from 'vue';
 import { subscribeToAuthState } from './services/auth';
 import { GLOBAL_FEEDBACK_PROVIDE_KEY } from './symbols/provide-keys';
@@ -27,6 +28,7 @@ import { GLOBAL_FEEDBACK_PROVIDE_KEY } from './symbols/provide-keys';
 const feedback = ref({
     message: null,
     type: 'success',
+    closable: true,
 });
 
 function updateFeedback(data) {
@@ -66,16 +68,11 @@ provide(GLOBAL_FEEDBACK_PROVIDE_KEY, {
 
 <template>
     <AppLayout>
-        <div
+        <NotificationBox
             v-if="feedback.message !== null"
-            class="p-4 mb-4 rounded"
-            :class="{
-                'bg-red-100': feedback.type == 'error',
-                'bg-green-100': feedback.type == 'success',
-            }"
-        >
-            {{ feedback.message }}
-        </div>
+            :data="feedback"
+            @close="feedback.message = null"
+        />
 
         <!-- 
         RouterView es un componente que se registra globalmente cuando

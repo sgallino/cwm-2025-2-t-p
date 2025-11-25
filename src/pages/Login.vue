@@ -4,6 +4,7 @@ import { login } from '../services/auth';
 import { useRouter } from 'vue-router';
 import AppButton from '../components/AppButton.vue';
 import AppH1 from '../components/AppH1.vue';
+import NotificationBox from '../components/NotificationBox.vue';
 import { GLOBAL_FEEDBACK_PROVIDE_KEY } from '../symbols/provide-keys';
 
 const router = useRouter();
@@ -76,16 +77,10 @@ function useLoginForm(router) {
 <template>
     <AppH1>Ingresar a mi cuenta</AppH1>
 
-    <div
+    <NotificationBox
         v-if="feedback.message !== null"
-        class="p-4 mb-4 rounded"
-        :class="{
-            'bg-red-100': feedback.type == 'error',
-            'bg-green-100': feedback.type == 'success',
-        }"
-    >
-        {{ feedback.message }}
-    </div>
+        :data="feedback"
+    />
 
     <form 
         action="#"
