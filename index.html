@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DV Social</title>
+  </head>
+  <body class="h-full">
+    <!-- 
+    # Usando valores arbitrario con Tailwind
+    Como nos sucede con el grid-templates-rows, pasa con frecuencia
+    que necesitemos agregar estilos con valores arbitrarios.
+    Por ejemplo, necesitamos crear una clase para:
+        grid-template-rows: 60px 1fr 100px;
+    
+    En Tailwind, una de las maneras en que podemos lograr esto es
+    usando "valores arbitrarios" en el nombre de la clase. Esto es,
+    donde va el valor, poner [] con el valor dentro.
+    Por ejemplo:
+        w-[98%]                   width: 98%;
+        w-[calc(100%-2rem)]       width: calc(100% - 2rem);
+
+    Importante: Si el valor tiene espacios, es necesario reemplazarlos con "_".
+    -->
+    <div id="app" class="grid grid-rows-[60px_1fr_100px] h-full"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
