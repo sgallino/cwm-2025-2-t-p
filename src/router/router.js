@@ -1,5 +1,5 @@
 // Archivo de routing.
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory, createWebHistory } from "vue-router";
 import { subscribeToAuthState } from "../services/auth";
 import Home from "../pages/Home.vue";
 import GlobalChat from "../pages/GlobalChat.vue";
@@ -48,7 +48,7 @@ const router = createRouter({
     // Se expande a:
     //  routes: routes
     routes, 
-    history: createWebHistory(),
+    history: createWebHashHistory(),
 });
 
 // Nos suscribimos para obtener los datos del usuario autenticado.
